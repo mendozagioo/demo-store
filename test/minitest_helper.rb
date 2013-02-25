@@ -3,6 +3,7 @@ require File.expand_path('../../config/environment', __FILE__)
 
 require "minitest/autorun"
 require "minitest/rails"
+require "minitest/rails/capybara"
 
 # Add `gem "minitest-rails-capybara"` to the test group of your Gemfile
 # and uncomment the following if you want Capybara feature tests
@@ -16,4 +17,10 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+end
+
+class ActionDispatch::IntegrationTest
+  include Rails.application.routes.url_helpers
+  include Capybara::RSpecMatchers
+  include Capybara::DSL
 end

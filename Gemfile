@@ -26,6 +26,7 @@ end
 
 group :test do
   gem 'minitest-rails'
+  gem 'minitest-rails-capybara'
 end
 
 gem 'jquery-rails'
