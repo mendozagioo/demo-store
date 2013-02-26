@@ -1,4 +1,8 @@
 Store::Application.routes.draw do
+  namespace :backend do
+    get 'sign_in' => 'session#new'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

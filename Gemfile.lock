@@ -73,6 +73,7 @@ GEM
     activerecord-deprecated_finders (0.0.3)
     arel (3.0.2)
     atomic (1.0.1)
+    bcrypt-ruby (3.0.1)
     better_errors (0.7.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -110,6 +111,7 @@ GEM
     meta_request (0.2.1)
       rack-contrib
       rails
+    method_source (0.8.1)
     mime-types (1.21)
     minitest (4.6.1)
     minitest-capybara (0.1.0)
@@ -129,6 +131,12 @@ GEM
     nokogiri (1.5.6)
     pg (0.14.1)
     polyglot (0.3.3)
+    pry (0.9.12)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    pry-rails (0.2.2)
+      pry (>= 0.9.10)
     rack (1.5.2)
     rack-contrib (1.1.0)
       rack (>= 0.9.1)
@@ -144,6 +152,7 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
+    slop (3.4.3)
     sprockets (2.8.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -170,6 +179,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt-ruby (~> 3.0.0)
   better_errors
   coffee-rails!
   jbuilder (~> 1.0.1)
@@ -178,6 +188,7 @@ DEPENDENCIES
   minitest-rails
   minitest-rails-capybara
   pg
+  pry-rails
   rails!
   sass-rails!
   sprockets-rails!
