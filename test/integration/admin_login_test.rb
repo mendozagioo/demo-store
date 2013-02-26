@@ -12,7 +12,7 @@ feature 'admin login' do
     end
     click_button 'login'
 
-    assert page.has_content?('Bienvenido admin@store.com')
+    have_content('Bienvenido admin@store.com').must_equal true
   end
 
   scenario 'Admin with invalid credentials should see an error' do
@@ -22,6 +22,6 @@ feature 'admin login' do
     end
     click_button 'login'
 
-    assert page.has_content?('Por favor verifique sus credenciales')
+    have_content('Por favor verifique sus credenciales').must_equal true
   end
 end
