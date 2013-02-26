@@ -22,12 +22,15 @@ group :development do
   gem 'better_errors'
   gem 'meta_request'
   gem 'pry-rails'
+  gem 'foreman'
 end
 
 group :test do
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
 end
+
+gem 'puma'
 
 gem 'jquery-rails'
 
