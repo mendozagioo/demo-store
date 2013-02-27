@@ -1,0 +1,17 @@
+es:
+
+  login_errors:
+    message: 'Por favor verifique sus credenciales'
+
+  backend:
+    session:
+      new:
+        new_session: 'Iniciar sesion'
+        email: 'Correo electronico'
+        password: 'Clave'
+        login: 'Iniciar sesion'
+
+  layouts:
+    application:
+      welcome: 'Bienvenido %{email}'
+      logout: 'Cerrar sesion'

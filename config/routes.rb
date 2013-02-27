@@ -1,6 +1,9 @@
 Store::Application.routes.draw do
   namespace :backend do
     get 'sign_in' => 'session#new'
+    post 'session' => 'session#create', as: :session_create
+    delete 'session' => 'session#destroy', as: :session_destroy
+    root to: 'dashboard#index'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

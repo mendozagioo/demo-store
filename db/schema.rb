@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130225233948) do
+ActiveRecord::Schema.define(version: 20130226175837) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
-    t.string   "password_hash"
-    t.string   "password_salt"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

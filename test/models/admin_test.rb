@@ -15,10 +15,9 @@ describe Admin do
     it "must be invalid without attributes" do
       admin.valid?.must_equal false
 
-      admin.errors.size.must_equal 3
+      admin.errors.size.must_equal 2
       admin.errors[:email].wont_be_nil
       admin.errors[:password].wont_be_nil
-      admin.errors[:password_confirmation].wont_be_nil
     end
 
     it "must invalid without unique email" do
@@ -37,8 +36,7 @@ describe Admin do
     it "must generate a salt and hash on save" do
       user = Admin.create email: 'user@store.com', password: '123pass', password_confirmation: '123pass'
 
-      user.password_hash.wont_be_nil
-      user.password_salt.wont_be_nil
+      user.password_digest.wont_be_nil
     end
 
     it "must authenticate user with valid credentials" do
