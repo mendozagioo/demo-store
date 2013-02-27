@@ -1,0 +1,13 @@
+$gw-column: 100px;          // Column Width
+$gw-gutter: 40px;           // Gutter Width
+
+$cool-gray: #444;
+$green: #5DA322;
+$padding: 2em;
+
+$error-color: #b94a48;
+$alert-background: #f2dede;
+$alert-foreground: $error-color;
+
+@include font-face(Merienda, 'merienda-regular', $asset-pipeline: true);
+@include font-face(Merienda, 'merienda-bold', bold, $asset-pipeline: true);

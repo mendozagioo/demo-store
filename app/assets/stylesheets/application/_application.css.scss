@@ -1,0 +1,30 @@
+body {
+  color: $cool-gray;
+  font-family: $lucida-grande;
+  @include background-image(image-url('pw_maze_white.png'));
+}
+
+#content {
+  width: grid-width(12);
+  margin-left: $gw-gutter();
+}
+
+.alert {
+  background-color: $alert-background;
+  color: $alert-foreground;
+  padding: .5em .5em .5em .5em;
+  border-radius: 3px;
+  margin-bottom: $padding / 2;
+  border: 1px solid $alert-foreground;
+}
+
+input[type='text'], input[type='password'] {
+  border-radius: 3px;
+  border: 1px solid #aaa;
+
+  &:focus {
+    outline: none;
+    border-color: $green;
+    box-shadow:0 0 10px $green;
+  }
+}
