@@ -1,12 +1,15 @@
-<h2><%= t('.new_session') %></h2>
-<%= form_for @admin, url: backend_session_create_path do |form| %>
-  <%= display_alert %>
-  <label for="admin_email"><%= t('.email') %>:</label>
-  <%= form.text_field :email %>
-  <br/>
-  <label for="admin_password"><%= t('.password') %>:</label>
-  <%= form.password_field :password %>
-  <br/>
-  <%= form.submit t('.login'), id: 'login' %>
+<div class='logo'>
+  <h1>Our Store</h1>
+</div>
+<div class='login-area'>
+  <h2><%= t('.new_session') %></h2>
+  <%= form_for @admin, url: backend_session_create_path do |form| %>
+    <%= display_alert %>
+    <%= form.text_field :email, placeholder: t('.email') %>
+    <br/>
+    <%= form.password_field :password, placeholder: t('.password') %>
+    <br/>
+    <%= form.submit t('.login'), id: 'login' %>
 
-<% end %>
+  <% end %>
+</div>

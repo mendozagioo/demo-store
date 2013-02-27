@@ -1,0 +1,81 @@
+@import "bourbon";
+
+$gw-column: 100px;          // Column Width
+$gw-gutter: 40px;           // Gutter Width
+
+$cool-gray: #444;
+$green: #5DA322;
+$padding: 2em;
+
+$error-color: #b94a48;
+$alert-background: #f2dede;
+$alert-foregorund: $error-color;
+
+@include font-face(Merienda, 'merienda-regular', $asset-pipeline: true);
+@include font-face(Merienda, 'merienda-bold', bold, $asset-pipeline: true);
+
+body {
+  color: $cool-gray;
+  font-family: $lucida-grande;
+  @include background-image(image-url('pw_maze_white.png'));
+}
+
+header {
+  //width: flex-grid(12);
+  //margin-left: flex-gutter();
+}
+
+#content {
+  width: grid-width(12);
+  margin-left: $gw-gutter();
+}
+
+.login-area, .logo {
+  width: grid-width(4);
+  margin-left: grid-width(2);
+}
+
+.login-area {
+  background-color: white;
+
+  h2 {
+    padding: $padding / 2;
+    padding-bottom: $padding / 4;
+    text-align: center;
+    font-weight: normal;
+  }
+
+  form {
+    padding: 0 $padding ($padding / 2);
+
+    input[type='text'], input[type='password'] {
+      width: 98%;
+      font-size: 1.5em;
+      padding: .2em;
+      margin-bottom: $padding / 4;
+    }
+
+    #login {
+      @include button(simple, $green);
+      font-size: 1.2em;
+      width: 100%;
+    }
+  }
+}
+
+.logo {
+  text-align: center;
+
+  h1{
+    font-family: Merienda;
+    font-weight: bold;
+    font-size: 3em;
+  }
+}
+.alert{
+  background-color: $alert-background;
+  color: $alert-foregorund;
+  padding: .2em .5em .2em .5em;
+  border-radius: 3px;
+  margin-bottom: $padding / 2;
+}
