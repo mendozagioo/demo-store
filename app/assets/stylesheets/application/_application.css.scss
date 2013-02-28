@@ -1,10 +1,11 @@
 body {
   color: $cool-gray;
   font-family: $lucida-grande;
+  margin: 0;
   @include background-image(image-url('pw_maze_white.png'));
 }
 
-#content {
+.container {
   width: grid-width(12);
   margin: auto;
 }
@@ -27,4 +28,14 @@ input[type='text'], input[type='password'] {
     border-color: $green;
     box-shadow:0 0 10px $green;
   }
+}
+
+footer{
+  font-size: 15px;
+  background-color: #333;
+  color: #eee;
+  padding: $padding / 2;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }

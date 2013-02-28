@@ -19,7 +19,7 @@
     input[type='text'], input[type='password'] {
       width: 98%;
       font-size: 1.5em;
-      padding: .2em;
+      padding: $padding / 10;
       margin-bottom: $padding / 4;
     }
 
