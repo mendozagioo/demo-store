@@ -25,7 +25,7 @@ describe Backend::ProfileController do
   end
 
   describe 'new' do
-    it "should get display a form" do
+    it "should new display a form" do
       stub_current_admin 200
 
       get :new

@@ -11,6 +11,7 @@ class Backend::ProfileController < ApplicationController
   end
 
   def edit
+    @profile = current_admin.profile
   end
 
   def create
