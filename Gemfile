@@ -34,6 +34,8 @@ gem 'puma'
 
 gem 'jquery-rails'
 
+gem 'validate_as_email', git: 'git@github.com:mariochavez/validate_as_email.git'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 

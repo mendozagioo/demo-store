@@ -15,9 +15,9 @@ describe Admin do
     it "must be invalid without attributes" do
       admin.valid?.must_equal false
 
-      admin.errors.size.must_equal 2
-      admin.errors[:email].wont_be_nil
-      admin.errors[:password].wont_be_nil
+      admin.errors.size.must_equal 3
+      admin.errors[:email].wont_be_empty
+      admin.errors[:password].wont_be_empty
     end
 
     it "must invalid without unique email" do
@@ -28,7 +28,36 @@ describe Admin do
       admin.password_confirmation = 'password'
 
       admin.valid?.must_equal false
-      admin.errors[:email].wont_be_nil
+      admin.errors[:email].wont_be_empty
+    end
+
+    describe 'Password' do
+      it 'must be invalid when password confirmation does not match' do
+        admin.email = 'user@store.com'
+        admin.password = 'password'
+
+        admin.valid?.must_equal false
+        admin.errors[:password_confirmation].wont_be_empty
+      end
+
+      it "must be invalid when password is less than 6 chars" do
+        admin.email = 'user@store.com'
+        admin.password = 'pass'
+
+        admin.valid?.must_equal false
+        admin.errors[:password].wont_be_empty
+      end
+    end
+
+    describe 'Email' do
+      it 'must be invalid with invalid email address' do
+        admin.email = 'some text'
+        admin.password = 'password'
+        admin.password_confirmation = 'password'
+
+        admin.valid?.must_equal false
+        admin.errors[:email].wont_be_empty
+      end
     end
   end
 

@@ -22,7 +22,7 @@ describe Backend::SessionController do
 
   describe 'create' do
     it 'success with valid credentials' do
-      params = { email: 'user@store.com', password: '123pass' }
+      params = { email: 'user@store.com', password: '123pass', password_confirmation: '123pass' }
 
       Admin.create params
 

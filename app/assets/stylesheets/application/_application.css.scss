@@ -32,8 +32,8 @@ input[type='text'], input[type='password'] {
 
 footer{
   font-size: 15px;
-  background-color: #333;
-  color: #eee;
+  background-color: $cool-gray;
+  color: $ligthen-green;
   padding: $padding / 2;
   position: absolute;
   bottom: 0;

@@ -1,5 +1,7 @@
 es:
 
+  app_name: 'HueHue'
+
   login_errors:
     message: 'Por favor verifique sus credenciales'
 
