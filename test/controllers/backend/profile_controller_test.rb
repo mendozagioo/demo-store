@@ -43,9 +43,14 @@ describe Backend::ProfileController do
     end
   end
 
-  it "should get edit" do
-    #get :edit
-    assert_response :success
+  describe 'edit' do
+    it "should edit display a form" do
+      get :edit
+
+      assert_response :success
+      assert_template :edit
+      assigns[:profile].wont_be_nil
+    end
   end
 
   it "should get create" do
