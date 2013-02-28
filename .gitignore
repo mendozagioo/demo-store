@@ -17,3 +17,5 @@
 
 .sass-cache
 .DS_store
+
+public/assets
