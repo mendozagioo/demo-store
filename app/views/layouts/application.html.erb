@@ -7,11 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header>
-    <div class="user">
-      <%= display_current_admin %>
-    </div>
-  </header>
+  <% unless controller.controller_name == 'session' %>
+    <header>
+      <div class="user">
+        <%= display_current_admin %>
+      </div>
+    </header>
+  <% end %>
 
   <div class="container">
     <%= yield %>
