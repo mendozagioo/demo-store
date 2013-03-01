@@ -7,12 +7,13 @@ feature 'admin profile' do
     visit '/backend/profile'
   end
 
+  focus
   scenario 'Admin navigates to profile and update name' do
-    within('#profile') do
+    within('#new_profile') do
       fill_in 'profile_name', with: 'Super admin'
     end
     click_button 'update'
 
-    assert page.has_text?('Su informacion fue actaulizada')
+    assert page.has_text?('Su informacion fue actualizada')
   end
 end

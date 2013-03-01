@@ -43,6 +43,7 @@ feature 'admin login' do
 end
 
 def logout_admin
+  visit '/backend'
   all('.logout').each{|l| l.click}
 end
 

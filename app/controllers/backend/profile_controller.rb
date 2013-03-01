@@ -7,7 +7,7 @@ class Backend::ProfileController < ApplicationController
   def new
     return redirect_to backend_profile_path, notice: t('.already_have_profile') if current_admin.profile.present?
 
-    @profile = Profile.new
+    @profile = current_admin.build_profile
   end
 
   def edit

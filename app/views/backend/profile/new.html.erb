@@ -1,2 +1,14 @@
-<h1>Backend::Profile#new</h1>
-<p>Find me in app/views/backend/profile/new.html.erb</p>
+<%= form_for @profile, url: backend_profile_path do |form| %>
+  <%= display_alert %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <br/>
+  <%= form.fields_for :admin do |admin_fields| %>
+    <%= admin_fields.label :password %>
+    <%= admin_fields.password_field :password %>
+    <br/>
+    <%= admin_fields.label :password_confirmation %>
+    <%= admin_fields.password_field :password_confirmation %>
+  <% end %>
+  <%= form.submit t('.update'), id: 'update' %>
+<% end %>
