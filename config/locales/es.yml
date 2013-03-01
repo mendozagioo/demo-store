@@ -15,5 +15,8 @@ es:
 
   layouts:
     application:
+
+  shared:
+    header:
       welcome: 'Bienvenido %{email}'
       logout: 'Cerrar sesion'

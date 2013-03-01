@@ -2,7 +2,7 @@ module ApplicationHelper
   def display_current_admin
     return unless admin_logged?
 
-    message = t('.welcome', email: current_admin.try(:email))
+    message = t('.welcome', email: current_admin.profile.present? ? current_admin.profile.name : current_admin.email)
     message << ' | '
     message << link_to(t('.logout'), backend_session_destroy_path, method: :delete, class: 'logout')
     message.html_safe
@@ -12,5 +12,11 @@ module ApplicationHelper
     content_tag :div, class: 'alert' do
       flash[:alert]
     end if flash[:alert]
+  end
+
+  def display_notice
+    content_tag :div, class: 'notice' do
+      flash[:notice]
+    end if flash[:notice]
   end
 end
