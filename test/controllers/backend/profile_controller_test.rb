@@ -116,11 +116,59 @@ describe Backend::ProfileController do
     end
   end
 
-  it "should get update" do
-    #put :update
-    assert_response :success
-  end
+  describe 'update' do
+    let(:params) {
+      {
+        profile: { name: 'Super admin' ,
+          admin_attributes: { id: 100, password: '', password_confirmation: '' }
+        }
+      }
+    }
 
+    it 'should redirect to create profile when no profile available' do
+      stub_current_admin 200
+
+      put :update, params
+
+      assert_redirected_to new_backend_profile_path
+      flash[:notice].wont_be_nil
+    end
+
+    it "should update a profile and redirect to profile show" do
+
+      put :update, params
+
+      assert_redirected_to backend_profile_path
+      flash[:notice].wont_be_nil
+    end
+
+    it "should display edit form if profile is invalid" do
+      params[:profile][:name] = ''
+
+      put :update, params
+
+      assert_redirected_to edit_backend_profile_path
+      flash[:alert].wont_be_nil
+    end
+
+    it "should update profile and password and redirect to profile show" do
+      params[:profile][:admin_attributes][:password] = 'superpass'
+      params[:profile][:admin_attributes][:password_confirmation] = 'superpass'
+      put :update, params
+
+      assert_redirected_to backend_profile_path
+      flash[:notice].wont_be_nil
+    end
+
+    it "should display edit form if password is invalid" do
+      params[:profile][:admin_attributes][:password] = 'super'
+
+      put :update, params
+
+      assert_redirected_to edit_backend_profile_path
+      flash[:alert].wont_be_nil
+    end
+  end
 end
 
 def stub_current_admin(id = 100)

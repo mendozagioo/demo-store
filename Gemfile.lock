@@ -87,6 +87,8 @@ GEM
     minitest-capybara (0.1.0)
       capybara (>= 1.0)
       minitest-matchers (>= 1.2)
+    minitest-focus (1.0.0)
+      minitest (~> 4.4)
     minitest-matchers (1.2.0)
       minitest (>= 2.5.0)
     minitest-rails (0.5.2)
@@ -182,6 +184,7 @@ DEPENDENCIES
   jbuilder (~> 1.0.1)
   jquery-rails
   meta_request
+  minitest-focus
   minitest-rails
   minitest-rails-capybara
   pg

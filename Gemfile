@@ -28,6 +28,7 @@ end
 group :test do
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
+  gem 'minitest-focus'
 end
 
 gem 'puma'

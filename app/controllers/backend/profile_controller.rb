@@ -16,9 +16,9 @@ class Backend::ProfileController < ApplicationController
   end
 
   def create
-    @profile = current_admin.build_profile profile_params
+    @profile = current_admin.build_profile profile_params.except(:admin_attributes)
 
-    update_password_attributes!
+    set_password_attributes!
 
     if @profile.valid?
       @profile.save
@@ -30,10 +30,20 @@ class Backend::ProfileController < ApplicationController
   end
 
   def update
+    @profile = current_admin.profile
+    return redirect_to new_backend_profile_path, notice: t('.create_a_profile') unless @profile
+
+    set_password_attributes!
+
+    unless @profile.update_attributes profile_params.except(:admin_attributes)
+      return redirect_to edit_backend_profile_path, alert: t('.error_saving_resource')
+    end
+
+    redirect_to backend_profile_path, notice: t('.profile_updated')
   end
 
 protected
-  def update_password_attributes!
+  def set_password_attributes!
     if profile_params[:admin_attributes][:password].present?
       @profile.admin.password = profile_params[:admin_attributes][:password]
       @profile.admin.password_confirmation = profile_params[:admin_attributes][:password_confirmation]
@@ -41,6 +51,6 @@ protected
   end
 
   def profile_params
-    params.require(:profile).permit(:name, admin_attributes: [:password, :password_confirmation])
+    params.require(:profile).permit(:name, admin_attributes: [:password, :password_confirmation, :id])
   end
 end
