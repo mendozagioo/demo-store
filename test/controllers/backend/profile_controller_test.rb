@@ -51,11 +51,69 @@ describe Backend::ProfileController do
       assert_template :edit
       assigns[:profile].wont_be_nil
     end
+
+    it "should redirect to new when user have no profile" do
+      stub_current_admin 200
+
+      get :edit
+
+      assert_redirected_to new_backend_profile_path
+      flash[:notice].wont_be_nil
+    end
   end
 
-  it "should get create" do
-    #post :create
-    assert_response :success
+  describe 'post' do
+    let(:params) {
+      {
+        profile: { name: 'Super admin' ,
+          admin_attributes: { password: '', password_confirmation: '' }
+        }
+      }
+    }
+
+    it "should create a profile and redirect to profile show" do
+      stub_current_admin 200
+
+      post :create, params
+
+      assert_redirected_to backend_profile_path
+      flash[:notice].wont_be_nil
+    end
+
+    it 'should create a profile, set new password and redirect to profile show' do
+      stub_current_admin 200
+
+      params[:profile][:admin_attributes][:password] = 'superpass'
+      params[:profile][:admin_attributes][:password_confirmation] = 'superpass'
+      post :create, params
+
+      assert_redirected_to backend_profile_path
+      flash[:notice].wont_be_nil
+    end
+
+    it 'should fail to create profile and redisplay form when profile is invalid' do
+      stub_current_admin 200
+
+      params[:profile][:name] = ''
+      post :create, params
+
+      assert_response :success
+      assert_template :new
+      flash[:alert].wont_be_nil
+      assigns[:profile].errors.size.must_equal 1
+    end
+
+    it 'should fail to create a profile and redisplay form when password is invalid' do
+      stub_current_admin 200
+
+      params[:profile][:admin_attributes][:password] = 'pass'
+      post :create, params
+
+      assert_response :success
+      assert_template :new
+      flash[:alert].wont_be_nil
+      assigns[:profile].errors.size.must_equal 3
+    end
   end
 
   it "should get update" do
@@ -67,7 +125,7 @@ end
 
 def stub_current_admin(id = 100)
   Backend::ProfileController.class_exec(id) do |id|
-    body = Proc.new{ @admin ||= Admin.find id }
+    body = -> { @admin ||= Admin.find id }
     define_method :current_admin, body
   end
 end
