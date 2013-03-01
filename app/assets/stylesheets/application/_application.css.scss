@@ -1,3 +1,12 @@
+@mixin message($background-color: $alert-background, $color: $alert-foreground) {
+  background-color: $background-color;
+  color: $color;
+  padding: .5em .5em .5em .5em;
+  border-radius: 3px;
+  margin-bottom: $padding / 2;
+  border: 1px solid $color;
+}
+
 body {
   color: $cool-gray;
   font-family: $lucida-grande;
@@ -10,14 +19,14 @@ body {
   margin: auto;
 }
 
-.alert {
-  background-color: $alert-background;
-  color: $alert-foreground;
-  padding: .5em .5em .5em .5em;
-  border-radius: 3px;
-  margin-bottom: $padding / 2;
-  border: 1px solid $alert-foreground;
+.alert  {
+  @include message;
 }
+
+.notice {
+  @include message($notice-background, $notice-foreground);
+}
+
 
 input[type='text'], input[type='password'] {
   border-radius: 3px;

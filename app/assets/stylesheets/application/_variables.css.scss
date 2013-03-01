@@ -10,5 +10,9 @@ $error-color: #b94a48;
 $alert-background: #f2dede;
 $alert-foreground: $error-color;
 
+$notice-color: $green;
+$notice-background: #F6FFE0;
+$notice-foreground: $notice-color;
+
 @include font-face(Merienda, 'merienda-regular', $asset-pipeline: true);
 @include font-face(Merienda, 'merienda-bold', bold, $asset-pipeline: true);
