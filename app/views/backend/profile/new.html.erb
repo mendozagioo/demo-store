@@ -1,14 +1,6 @@
-<%= form_for @profile, url: backend_profile_path do |form| %>
-  <%= display_alert %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-  <br/>
-  <%= form.fields_for :admin do |admin_fields| %>
-    <%= admin_fields.label :password %>
-    <%= admin_fields.password_field :password %>
-    <br/>
-    <%= admin_fields.label :password_confirmation %>
-    <%= admin_fields.password_field :password_confirmation %>
-  <% end %>
-  <%= form.submit t('.update'), id: 'update' %>
-<% end %>
+<div id="content">
+  <h2><%= t('backend.profile.title') %></h2>
+  <p class="form-help"><%= t('backend.profile.help') %></p>
+
+  <%= render partial: 'form', locals: { profile: @profile } %>
+</div>

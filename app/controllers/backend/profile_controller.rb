@@ -1,32 +1,33 @@
 class Backend::ProfileController < ApplicationController
   def show
     @profile = current_admin.profile
-    redirect_to new_backend_profile_path unless @profile
+
+    options = { location: new_backend_profile_path } unless @profile
+    respond_with @profile, options
   end
 
   def new
-    return redirect_to backend_profile_path, notice: t('.already_have_profile') if current_admin.profile.present?
+    @profile = current_admin.profile || current_admin.build_profile
 
-    @profile = current_admin.build_profile
+    options = { location: backend_profile_path, notice: t('.already_have_profile')} unless @profile.new_record?
+
+    respond_with @profile, options
   end
 
   def edit
     @profile = current_admin.profile
-    redirect_to new_backend_profile_path, notice: t('.create_a_profile') unless @profile
+
+    options = { location: new_backend_profile_path, notice: t('.create_a_profile') } unless @profile
+
+    respond_with @profile, options
   end
 
   def create
     @profile = current_admin.build_profile profile_params.except(:admin_attributes)
-
     set_password_attributes!
 
-    if @profile.valid?
-      @profile.save
-      return redirect_to backend_profile_path, notice: t('.profile_created')
-    end
-
-    flash[:alert] = t('.error_saving_resource')
-    render :new
+    saved = @profile.save
+    respond_with @profile, flash_now: !saved
   end
 
   def update
@@ -34,12 +35,9 @@ class Backend::ProfileController < ApplicationController
     return redirect_to new_backend_profile_path, notice: t('.create_a_profile') unless @profile
 
     set_password_attributes!
+    @profile.update_attributes profile_params.except(:admin_attributes)
 
-    unless @profile.update_attributes profile_params.except(:admin_attributes)
-      return redirect_to edit_backend_profile_path, alert: t('.error_saving_resource')
-    end
-
-    redirect_to backend_profile_path, notice: t('.profile_updated')
+    respond_with @profile
   end
 
 protected

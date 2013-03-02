@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_admin, :admin_logged?
 
+  self.responder = ActionsResponder
+  respond_to :html
+
 protected
   def already_in_session!
     redirect_to backend_root_path if admin_logged?

@@ -19,4 +19,12 @@ module ApplicationHelper
       flash[:notice]
     end if flash[:notice]
   end
+
+  def field_error(model, field)
+    if model.errors[field].any?
+      content_tag :span, class: 'error' do
+        model.errors[field].first
+      end
+    end
+  end
 end

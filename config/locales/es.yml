@@ -2,6 +2,9 @@ es:
 
   app_name: 'HueHue'
 
+  actions:
+    update: 'Actualizar'
+
   login_errors:
     message: 'Por favor verifique sus credenciales'
 
@@ -13,6 +16,13 @@ es:
         password: 'Clave'
         login: 'Iniciar sesion'
 
+    profile:
+      title: 'Actualice su perfil'
+      help: 'Introduzca su nombre en la forma. Opcionalmente si desea modificar su clave, puede introducir esta y su confirmacion para realizar el cambio.'
+      password_help: 'Para cambiar su clave, introduzca la nueva y su confirmacion. La clave debe de tener un minimo de 6 caracteres.'
+      password: 'Clave'
+      password_confirmation: 'Confirmar clave'
+
   layouts:
     application:
 
@@ -20,3 +30,27 @@ es:
     header:
       welcome: 'Bienvenido %{email}'
       logout: 'Cerrar sesion'
+
+  flash:
+    action:
+      acreate: 'Fallo la creacion de %{resource}'
+
+    backend:
+      profile:
+        create: 'Su perfil no pudo ser actualizado'
+
+  activerecord:
+    models:
+      admin: 'Administrador'
+      profile: 'Perfil'
+    attributes:
+      admin:
+        email: 'Correo electronico'
+      profile:
+        name: 'Nombre'
+
+    errors:
+      messages:
+        blank: 'No puede estar en blanco'
+        too_short: 'demasiado corto, minimo necesita %{count} caracteres'
+        confirmation: 'no coincide con la clave'

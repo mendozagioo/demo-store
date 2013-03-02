@@ -9,16 +9,14 @@ class Backend::SessionController < ApplicationController
     email = params[:admin][:email]
     password = params[:admin][:password]
 
-    @admin = Admin.authenticate email, password
+    @admin = Admin.authenticate(email, password) || Admin.new(email: email).tap{ |admin| admin.valid? }
 
-    if @admin
+    unless @admin.new_record?
       session[:admin_id] = @admin.id
-      return redirect_to backend_root_path
+      return respond_with @admin, location: backend_root_path
     end
 
-    flash.now[:alert] = t('login_errors.message')
-    @admin = Admin.new email: email
-    render :new
+    respond_with @admin, flash_now: true, alert: t('login_errors.message')
   end
 
   def destroy

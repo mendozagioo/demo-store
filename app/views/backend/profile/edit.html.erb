@@ -1,2 +1,6 @@
-<h1>Backend::Profile#edit</h1>
-<p>Find me in app/views/backend/profile/edit.html.erb</p>
+<div id="content">
+  <h2><%= t('backend.profile.title') %></h2>
+  <p class="form-help"><%= t('backend.profile.help') %></p>
+
+  <%= render partial: 'form', locals: { profile: @profile } %>
+</div>
