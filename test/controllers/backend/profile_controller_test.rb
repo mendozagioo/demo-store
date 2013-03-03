@@ -147,7 +147,8 @@ describe Backend::ProfileController do
 
       put :update, params
 
-      assert_redirected_to edit_backend_profile_path
+      assert_response :success
+      assert_template :edit
       flash[:alert].wont_be_nil
     end
 
@@ -165,7 +166,8 @@ describe Backend::ProfileController do
 
       put :update, params
 
-      assert_redirected_to edit_backend_profile_path
+      assert_response :success
+      assert_template :edit
       flash[:alert].wont_be_nil
     end
   end

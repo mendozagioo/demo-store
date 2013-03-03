@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
   respond_to :html
 
 protected
+  def debug_to_log(message)
+    logger.debug "\033[0;33m#{message}\033[0;37m""]']"
+  end
+
   def already_in_session!
     redirect_to backend_root_path if admin_logged?
   end

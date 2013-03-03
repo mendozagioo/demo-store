@@ -2,14 +2,15 @@ class Backend::ProfileController < ApplicationController
   def show
     @profile = current_admin.profile
 
-    options = { location: new_backend_profile_path } unless @profile
+    options = @profile ? {} : { location: new_backend_profile_path, notice: t('.update_profile') }
+
     respond_with @profile, options
   end
 
   def new
     @profile = current_admin.profile || current_admin.build_profile
 
-    options = { location: backend_profile_path, notice: t('.already_have_profile')} unless @profile.new_record?
+    options = @profile.new_record? ? {} : { location: backend_profile_path, notice: t('.already_have_profile') }
 
     respond_with @profile, options
   end
@@ -17,7 +18,7 @@ class Backend::ProfileController < ApplicationController
   def edit
     @profile = current_admin.profile
 
-    options = { location: new_backend_profile_path, notice: t('.create_a_profile') } unless @profile
+    options = @profile ? {} : { location: new_backend_profile_path, notice: t('.create_a_profile') }
 
     respond_with @profile, options
   end
@@ -35,7 +36,8 @@ class Backend::ProfileController < ApplicationController
     return redirect_to new_backend_profile_path, notice: t('.create_a_profile') unless @profile
 
     set_password_attributes!
-    @profile.update_attributes profile_params.except(:admin_attributes)
+    update_params = @profile.admin.password.present? ? profile_params : profile_params.except(:admin_attributes)
+    @profile.update_attributes update_params
 
     respond_with @profile
   end

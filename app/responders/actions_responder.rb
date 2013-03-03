@@ -7,6 +7,7 @@ class ActionsResponder < ActionController::Responder
     super
 
     @alert = options.delete(:alert)
+    @notice = options.delete(:notice)
     @flash_now = options.delete(:flash_now) || false
     has_flash = options.delete(:flash)
     @flash = has_flash.nil? ? true : has_flash
@@ -15,6 +16,7 @@ class ActionsResponder < ActionController::Responder
 
   def to_html
     set_alert_flash_message if !get? && has_errors? && @flash
+    set_notice_flash_message if @flash
 
     response = calculate_response
     super unless response.present?
@@ -52,7 +54,11 @@ protected
   end
 
   def set_alert_flash_message
-    set_flash :alert, @alert || translate_message
+    set_flash :alert, @alert || translate_message('alert')
+  end
+
+  def set_notice_flash_message
+    set_flash :notice, @notice || translate_message('notice')
   end
 
   def set_flash(key, message)
@@ -65,16 +71,16 @@ protected
     namespace << 'path'
     path = namespace.join('_')
 
-    Rails.logger.debug ">> #{path}"
     controller.send path
   end
 
-  def translate_message
+  def translate_message(scope)
     namespace = controller.controller_path.split('/')
+    namespace << scope
     namespace << controller.action_name
 
     lookups = Array namespace.join('.')
-    lookups << "action.#{controller.action_name}".to_sym
+    lookups << "action.#{scope}.#{controller.action_name}".to_sym
 
     I18n.t(lookups.shift, scope: :flash,
       default: lookups,

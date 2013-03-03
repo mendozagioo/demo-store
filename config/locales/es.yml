@@ -33,11 +33,16 @@ es:
 
   flash:
     action:
-      acreate: 'Fallo la creacion de %{resource}'
+      alert:
+        create: 'Fallo la creacion de %{resource}'
+      notice:
+        create: 'Su %{resource} fue actualizado(a)'
 
     backend:
       profile:
-        create: 'Su perfil no pudo ser actualizado'
+        alert:
+          create: 'Su perfil no pudo ser actualizado'
+          update: 'Su perfil no pudo ser actualizado'
 
   activerecord:
     models:
