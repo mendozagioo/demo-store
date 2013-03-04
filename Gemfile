@@ -38,6 +38,7 @@ gem 'jquery-rails'
 
 gem 'validate_as_email', git: 'git@github.com:mariochavez/validate_as_email.git'
 
+gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git', branch: 'rails-4'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 

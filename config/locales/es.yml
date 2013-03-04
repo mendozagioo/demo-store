@@ -68,3 +68,16 @@ es:
         blank: 'No puede estar en blanco'
         too_short: 'demasiado corto, minimo necesita %{count} caracteres'
         confirmation: 'no coincide con la clave'
+
+  number:
+    human:
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB

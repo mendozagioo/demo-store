@@ -1,4 +1,16 @@
 GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: 2b98bc3c500a39cc7d2377609b4bd48fce3153f4
+  branch: rails-4
+  specs:
+    paperclip (3.4.0)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.4.0)
+      mime-types
+
+GIT
   remote: git@github.com:mariochavez/validate_as_email.git
   revision: ac017829fb3871f858d373623b49230107b323ea
   specs:
@@ -53,6 +65,7 @@ GEM
       xpath (~> 1.0.0)
     childprocess (0.3.8)
       ffi (~> 1.0, >= 1.0.11)
+    cocaine (0.4.2)
     coderay (1.0.9)
     coffee-rails (4.0.0.beta1)
       coffee-script (>= 2.2.0)
@@ -191,6 +204,7 @@ DEPENDENCIES
   minitest-focus
   minitest-rails
   minitest-rails-capybara
+  paperclip!
   pg
   pry-rails
   puma

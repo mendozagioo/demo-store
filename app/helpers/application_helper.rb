@@ -3,6 +3,7 @@ module ApplicationHelper
     return unless admin_logged?
 
     message = t('.welcome', email: current_admin.profile.present? ? current_admin.profile.name : current_admin.email)
+    message << image_tag(current_admin.profile.avatar(:thumb)) if current_admin.profile.present?
     message << ' | '
     message << link_to(t('.logout'), backend_session_destroy_path, method: :delete, class: 'logout')
     message.html_safe
@@ -21,6 +22,7 @@ module ApplicationHelper
   end
 
   def field_error(model, field)
+    Rails.logger.debug model.errors.inspect
     if model.errors[field].any?
       content_tag :span, class: 'error' do
         model.errors[field].first

@@ -51,6 +51,6 @@ protected
   end
 
   def profile_params
-    params.require(:profile).permit(:name, admin_attributes: [:password, :password_confirmation, :id])
+    params.require(:profile).permit(:name, :avatar, admin_attributes: [:password, :password_confirmation, :id])
   end
 end

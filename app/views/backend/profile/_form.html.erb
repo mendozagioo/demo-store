@@ -1,8 +1,13 @@
-<%= form_for profile, url: backend_profile_path do |form| %>
+<%= form_for profile, url: backend_profile_path, html: { multipart: true } do |form| %>
   <%= display_alert %>
   <%= form.label :name %>
   <%= form.text_field :name, class: 'medium' %>
   <%= field_error profile, :name %>
+  <br/>
+  <%= form.label :avatar %>
+  <%= form.file_field :avatar %>
+  <%= field_error profile, :avatar_content_type %>
+  <%= field_error profile, :avatar_file_size %>
   <hr>
   <p class="form-help"><%= t('backend.profile.password_help') %></p>
   <%= form.fields_for :admin do |admin_fields| %>
