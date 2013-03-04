@@ -58,7 +58,9 @@ protected
   end
 
   def set_notice_flash_message
-    set_flash :notice, @notice || translate_message('notice')
+    translated = translate_message('notice') if !get? && !@notice.present?
+    message = @notice || translated
+    set_flash :notice, message if message.present?
   end
 
   def set_flash(key, message)

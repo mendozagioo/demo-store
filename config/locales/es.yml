@@ -23,6 +23,14 @@ es:
       password: 'Clave'
       password_confirmation: 'Confirmar clave'
 
+      show:
+        update_profile: 'Actualice su perfil'
+        title: 'Perfil'
+        name: 'Nombre'
+        email: 'Correo electronico'
+      new:
+        already_have_profile: 'Usted ya cuenta con perfil'
+
   layouts:
     application:
 
@@ -37,6 +45,7 @@ es:
         create: 'Fallo la creacion de %{resource}'
       notice:
         create: 'Su %{resource} fue actualizado(a)'
+        update: 'Su %{resource} fue actualizado(a)'
 
     backend:
       profile:

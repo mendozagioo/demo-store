@@ -48,10 +48,12 @@ def logout_admin
 end
 
 def login_admin
-  Admin.create email: 'admin@store.com', password: 'password', password_confirmation: 'password'
+  counter = Admin.count + 1
+  email = "admin#{counter}@store.com"
+  Admin.create! email: email, password: 'password', password_confirmation: 'password'
 
   within('#new_admin') do
-    fill_in 'admin_email', with: 'admin@store.com'
+    fill_in 'admin_email', with: email
     fill_in 'admin_password', with: 'password'
   end
   click_button 'login'
