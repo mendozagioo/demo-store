@@ -69,6 +69,15 @@ es:
         too_short: 'demasiado corto, minimo necesita %{count} caracteres'
         confirmation: 'no coincide con la clave'
 
+      models:
+        profile:
+          attributes:
+            avatar_file_size:
+              less_than: 'demasiado grande, maximo %{max}'
+            avatar_content_type:
+              invalid: 'archivo invalido'
+
+
   number:
     human:
       storage_units:

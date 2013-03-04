@@ -32,7 +32,7 @@ class Backend::ProfileController < ApplicationController
   end
 
   def update
-    @profile = current_admin.profile
+    @profile = Profile.find_by_id current_admin.profile
     return redirect_to new_backend_profile_path, notice: t('.create_a_profile') unless @profile
 
     set_password_attributes!
