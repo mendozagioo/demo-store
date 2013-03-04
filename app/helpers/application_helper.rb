@@ -2,8 +2,12 @@ module ApplicationHelper
   def display_current_admin
     return unless admin_logged?
 
-    message = content_tag :span, t('.welcome', email: current_admin.profile.present? ? current_admin.profile.name : current_admin.email)
-    message << image_tag(current_admin.profile.avatar(:thumb), width: '32px') if current_admin.profile.present?
+    message = link_to backend_profile_path do |t|
+      name = content_tag :span do
+        t('.welcome', email: current_admin.profile.present? ? current_admin.profile.name : current_admin.email)
+      end
+      name << image_tag(current_admin.profile.avatar(:thumb), width: '32px').html_safe if current_admin.profile.present?
+    end
     message << ' | '
     message << link_to(t('.logout'), backend_session_destroy_path, method: :delete, class: 'logout')
     message.html_safe

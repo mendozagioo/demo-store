@@ -4,6 +4,7 @@ es:
 
   actions:
     update: 'Actualizar'
+    change: 'Modificar'
 
   login_errors:
     message: 'Por favor verifique sus credenciales'
