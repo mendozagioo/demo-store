@@ -39,6 +39,10 @@ GEM
       activesupport (= 4.0.0.beta1)
       arel (~> 4.0.0.beta1)
     activerecord-deprecated_finders (0.0.3)
+    activerecord-postgres-hstore (0.7.5)
+      activerecord (>= 3.1)
+      pg-hstore (>= 1.1.5)
+      rake
     activesupport (4.0.0.beta1)
       i18n (~> 0.6.2)
       minitest (~> 4.2)
@@ -118,6 +122,7 @@ GEM
     multi_json (1.6.1)
     nokogiri (1.5.6)
     pg (0.14.1)
+    pg-hstore (1.1.7)
     polyglot (0.3.3)
     pry (0.9.12)
       coderay (~> 1.0.5)
@@ -192,6 +197,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-postgres-hstore
   bcrypt-ruby (~> 3.0.0)
   better_errors
   bourbon
