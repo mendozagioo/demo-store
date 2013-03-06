@@ -25,3 +25,7 @@ public/system
 
 *.*~
 *~
+
+# Ignore database configurations
+
+config/database.yml
