@@ -1,12 +1,12 @@
-<h1>Lista de productos</h1>
+<h1><%= t('backend.product.show.header')%></h1>
 <table>
 	<tr>
-		<th>Name</th>
-		<th>Description</th>
-		<th>Price</th>
-		<th>Inventory</th>
-		<th>Active</th>
-		<th>Tags</th>
+		<th><%= t('backend.product.fields.name')%></th>
+		<th><%= t('backend.product.fields.description')%></th>
+		<th><%= t('backend.product.fields.price')%></th>
+		<th><%= t('backend.product.fields.inventory')%></th>
+		<th><%= t('backend.product.fields.active')%></th>
+		<th><%= t('backend.product.fields.tags')%></th>
 		
 	</tr>
   <% @products.each do |product| %>
@@ -31,6 +31,8 @@
     	  <% product.tags.each do |k, v|%>
           <%= "#{k}: #{v}" %>
         <%end%> 
+      <% else %>
+        <%= 'No tags have been added' %>
       <%end%> 
     </td>
   </tr>
