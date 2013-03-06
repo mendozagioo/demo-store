@@ -33,6 +33,10 @@ es:
         already_have_profile: 'Usted ya cuenta con perfil'
 
     product:
+      actions:
+        new: 'Agregar producto'
+        view: 'Ver lista de productos'
+        view_detaill: 'Ver detalle'
       show:
         header: 'Su lista de productos'
       fields:
@@ -42,6 +46,9 @@ es:
         inventory: 'Inventario'
         active: 'Activo'
         tags: 'Etiquetas'
+        actions: 'Acciones'
+      messages:
+        no_tags: 'No se han agregado etiquetas'
 
   layouts:
     application:
