@@ -20,3 +20,8 @@
 
 public/assets
 public/system
+
+# Ignore temporal files
+
+*.*~
+*~
