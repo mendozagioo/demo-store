@@ -32,6 +32,17 @@ es:
       new:
         already_have_profile: 'Usted ya cuenta con perfil'
 
+    product:
+      show:
+        header: 'Su lista de productos'
+      fields:
+        name: 'Nombre'
+        description: 'Descripción'
+        price: 'Precio'
+        inventory: 'Inventario'
+        active: 'Activo'
+        tags: 'Etiquetas'
+
   layouts:
     application:
 
