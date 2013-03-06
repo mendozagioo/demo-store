@@ -30,7 +30,7 @@ group :test do
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
   gem 'minitest-focus'
-  gem 'launchy'
+  #gem 'launchy'
 end
 
 gem 'puma'
@@ -57,3 +57,5 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use debugger
 # gem 'debugger'
+#
+gem 'rb-readline'
