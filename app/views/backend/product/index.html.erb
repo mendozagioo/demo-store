@@ -1,0 +1,45 @@
+<h1><%= t('backend.product.show.header')%></h1>
+
+<%= link_to t('backend.product.actions.new'), :new_backend_product %>
+
+<table>
+	<tr>
+		<th><%= t('backend.product.fields.name')%></th>
+		<th><%= t('backend.product.fields.description')%></th>
+		<th><%= t('backend.product.fields.price')%></th>
+		<th><%= t('backend.product.fields.inventory')%></th>
+		<th><%= t('backend.product.fields.active')%></th>
+		<th><%= t('backend.product.fields.tags')%></th>
+    <th><%= t('backend.product.fields.actions')%></th>
+		
+	</tr>
+  <% @products.each do |product| %>
+  <tr>
+    <td>
+      <%= product.name %>
+    </td>
+    <td>
+      <%= product.description %>
+    </td>
+    <td>
+      <%= "$#{product.price}" %>
+    </td>
+    <td>
+      <%= display_inventory product %>
+    </td>
+    <td>
+      <%= check_box_tag "inventory", "inventory", product.inventory, disabled: true%>
+    </td>
+    <td>
+      <% if product.tags%>
+    	  <% product.tags.each do |k, v|%>
+          <%= "#{k}: #{v}" %>
+        <%end%> 
+      <% else %>
+        <%= t('backend.product.messages.no_tags') %>
+      <%end%> 
+    </td>
+  </tr>
+  <% end %>
+</table>
+
