@@ -24,7 +24,7 @@
       <%= display_inventory product %>
     </td>
     <td>
-      <%= check_box("display", product.inventory, {disabled: 'disabled'}) %>
+      <%= check_box_tag "inventory", "inventory", product.inventory, disabled: true%>
     </td>
     <td>
       <% if product.tags%>
