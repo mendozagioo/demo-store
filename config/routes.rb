@@ -1,7 +1,7 @@
 Store::Application.routes.draw do
   namespace :backend do
     resource :profile, except: :destroy, controller: :profile    
-    resource :products, except: :destroy
+    resource :product, controller: :product
     get 'sign_in' => 'session#new'
     post 'session' => 'session#create', as: :session_create
     delete 'session' => 'session#destroy', as: :session_destroy
