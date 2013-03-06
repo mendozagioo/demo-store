@@ -2,7 +2,7 @@ class Product < ActiveRecord::Base
 
 	belongs_to :admin
 	has_many :photos
-  validate_on_create :photos_count_within_bounds
+	validate :photos_count_within_bounds, :on => :create
 
   private
   def photos_count_within_bounds
