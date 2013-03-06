@@ -1,6 +1,7 @@
 class Backend::ProductController < ApplicationController
 
-	def index
+	def index		
+		@products = Product.all
 	end
 
 	def show
@@ -8,6 +9,7 @@ class Backend::ProductController < ApplicationController
 	end
 
 	def new
+		@product = Product.new
 	end
 
 	def edit
