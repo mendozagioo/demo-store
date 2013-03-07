@@ -1,6 +1,6 @@
-class CreateProducts < ActiveRecord::Migration
+class CreateBackendProducts < ActiveRecord::Migration
   def change
-    create_table :products do |t|
+    create_table :backend_products do |t|
       t.string :name
       t.text :description
       t.decimal :price

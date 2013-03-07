@@ -2,17 +2,17 @@
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  description: MyText
-  price: 9.99
-  inventory: 1
-  active: false
+  name: 
+  description: 
+  price: 
+  inventory: 
+  active: 
   tags: 
 
 two:
-  name: MyString
-  description: MyText
-  price: 9.99
-  inventory: 1
-  active: false
+  name: 
+  description: 
+  price: 
+  inventory: 
+  active: 
   tags: 

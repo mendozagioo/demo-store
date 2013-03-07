@@ -1,8 +1,8 @@
 require "minitest_helper"
 
-describe Product do
+describe Backend::Product do
   before do
-    @product = Product.new
+    @product = Backend::Product.new
   end
 
   it "must be valid" do
